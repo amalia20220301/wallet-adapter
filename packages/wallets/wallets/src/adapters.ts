@@ -17,6 +17,7 @@ import { SolletExtensionWalletAdapter, SolletWalletAdapter } from '@solana/walle
 import { SolongWalletAdapter } from '@solana/wallet-adapter-solong';
 import { TokenPocketWalletAdapter } from '@solana/wallet-adapter-tokenpocket';
 import { TorusWalletAdapter } from '@solana/wallet-adapter-torus';
+import { KeystoneWalletAdapter } from '@solana/wallet-adapter-keystone';
 
 export interface WalletsConfig {
     network?: WalletAdapterNetwork;
@@ -41,6 +42,7 @@ export function getWalletAdapters({ network = WalletAdapterNetwork.Mainnet }: Wa
         new TokenPocketWalletAdapter(),
         new TorusWalletAdapter(),
         new LedgerWalletAdapter(),
+        new KeystoneWalletAdapter(),
         new SolletWalletAdapter({ network }),
         new BloctoWalletAdapter({ network }),
     ];

@@ -1,6 +1,6 @@
 {
-    "name": "@solana/wallet-adapter-react",
-    "version": "0.15.4",
+    "name": "@solana/wallet-adapter-keystone",
+    "version": "0.1.0",
     "author": "Solana Maintainers <maintainers@solana.foundation>",
     "repository": "https://github.com/solana-labs/wallet-adapter",
     "license": "Apache-2.0",
@@ -24,23 +24,20 @@
     "scripts": {
         "clean": "shx rm -rf lib/*",
         "build": "yarn clean && tsc -p tsconfig.json && tsc-esm -p tsconfig.json && tsc -p tsconfig.cjs.json",
-        "test": "jest",
         "postbuild": "echo '{\"type\":\"commonjs\"}' | npx json > lib/cjs/package.json && echo '{\"type\":\"module\"} ' | npx json > lib/esm/package.json"
     },
-    "peerDependencies": {
-        "react": "^17.0.0"
-    },
     "dependencies": {
-        "@keystonehq/sdk": "^0.11.0",
         "@solana/wallet-adapter-base": "^0.9.4",
-        "@solana/web3.js": "^1.36.0"
+        "@solana/web3.js": "^1.36.0",
+        "@keystonehq/eth-keyring": "^0.11.2-alpha.2",
+        "stream-browserify": "^3.0.0"
     },
     "devDependencies": {
-        "@types/jest": "^27.0.0",
-        "@types/react": "^17.0.40",
-        "jest": "^27.0.0",
-        "jest-localstorage-mock": "^2.4.18",
-        "react": "^17.0.0",
-        "ts-jest": "^27.0.0"
+        "@types/hdkey": "^2.0.1"
+    },
+    "overrides": {
+        "@keystonehq/eth-keyring": {
+            "stream": "npm:stream-browserify@^3.0.0"
+        }
     }
 }
